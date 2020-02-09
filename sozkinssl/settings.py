@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+MY_APP = ['kino']
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+]+ MY_APP
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,9 +78,16 @@ WSGI_APPLICATION = 'sozkinssl.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'sozkino',
+        'USER': 'postgres',
+        'HOST': 'localhost',
+        'PASSWORD': 'bolshevik1905',
+        'PORT': '5432',
+        'OPTIONS': {
+            #'options': '-c search_path=forest'
+         }
+     }
 }
 
 
