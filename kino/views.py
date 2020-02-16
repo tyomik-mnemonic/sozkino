@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from .serializers import *
+from rest_framework import viewsets, generics, permissions, filters, decorators
+from .models import *
 
-# Create your views here.
+class MovieView(viewsets.ModelViewSet):
+    queryset = MovieView.objects.all()
+    serializer_class = SozMovieSerializer
+    permission_classes = (permissions.AllowAny,)
